@@ -8,7 +8,7 @@ const Summary = () => {
 
     return (
         <div className='mb-4 '>
-            <div className='text-4xl underline text-blue-600 text-center mt-4 font-bold'>
+            <div className='lg:text-4xl sm:text-xl underline text-blue-600 text-center mt-4 font-bold'>
                 <h1 className="text-center my-6">Our Business Summary</h1>
             </div>
             <div className="stats stats-vertical  flex  shadow-xl w-full">
