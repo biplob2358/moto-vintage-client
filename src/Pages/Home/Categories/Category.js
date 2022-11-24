@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 const Category = ({ category }) => {
     const { name, img, category_id } = category;
+
+
     return (
         <div className='mb-4  mx-auto'>
             <div className="card w-80 bg-base-100 shadow-xl gap-4">
@@ -12,7 +14,7 @@ const Category = ({ category }) => {
                 <div className="card-body items-center text-center">
                     <h2 className="card-title font-bold">{name}</h2>
                     <div className="card-actions">
-                        <Link to={category_id}><button className="btn btn-primary">See Products</button></Link>
+                        <Link to={`/categories/${category_id}`}><button className="btn btn-primary">See Products</button></Link>
                     </div>
                 </div>
             </div>
