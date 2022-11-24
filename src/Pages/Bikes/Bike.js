@@ -2,7 +2,7 @@ import React from 'react';
 import { MdVerified } from 'react-icons/md';
 
 const Bike = (bike) => {
-    const { _id, name, img, description, location, resaleValue, originalPrice, usedYears, condition,
+    const { name, img, description, location, resaleValue, originalPrice, usedYears, condition,
         sellerName, isVerified } = bike.bike;
     console.log(bike)
     return (

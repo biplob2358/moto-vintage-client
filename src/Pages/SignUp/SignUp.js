@@ -37,8 +37,8 @@ const SignUp = () => {
 
                             <select className="select select-bordered"
                                 {...register("role", { required: "Type is required" })}>
-                                <option >User</option>
-                                <option>Seller</option>
+                                <option value={"user"}>User</option>
+                                <option value={"seller"}>Seller</option>
                             </select>
                         </div>
 
