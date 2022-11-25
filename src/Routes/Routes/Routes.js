@@ -7,6 +7,7 @@ import Home from '../../Pages/Home/Home/Home';
 import Login from '../../Pages/Login/Login';
 import NotFound from '../../Pages/NotFound/NotFound';
 import SignUp from '../../Pages/SignUp/SignUp';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 const router = createBrowserRouter([
     {
@@ -37,12 +38,12 @@ const router = createBrowserRouter([
             },
             {
                 path: '/categories/:id',
-                element: <Bikes></Bikes>,
+                element: <PrivateRoute><Bikes></Bikes></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.id}`),
             },
             {
                 path: '/dashboard',
-                element: <Dashboard></Dashboard>
+                element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
             }
 
         ]
