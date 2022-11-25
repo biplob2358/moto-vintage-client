@@ -9,13 +9,14 @@ import GoogleLogin from '../Shared/GoogleLogin/GoogleLogin';
 const SignUp = () => {
     const { register, formState: { errors }, handleSubmit } = useForm();
     const { createUser, updateUser } = useContext(AuthContext);
-    const [createdUserEmail, setCreatedUserEmail] = useState(' ');
+    const [createdUserEmail, setCreatedUserEmail] = useState('');
     const [token] = useToken(createdUserEmail);
     const navigate = useNavigate();
 
 
     if (token) {
         navigate('/');
+
     }
 
     const handleSignUp = data => {
@@ -32,9 +33,11 @@ const SignUp = () => {
                     .then(() => {
 
                         saveUser(data.name, data.email, data.role);
+
                     })
                     .catch(error => toast.error(error))
             })
+
             .catch(error => {
                 toast.error(error.message);
             });
