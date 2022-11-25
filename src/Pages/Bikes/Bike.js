@@ -1,12 +1,11 @@
 import React from 'react';
 import { MdVerified } from 'react-icons/md';
 
-const Bike = (bike) => {
+const Bike = ({ bike, setBookBike }) => {
     const { name, img, description, location, resaleValue, originalPrice, usedYears, condition,
-        sellerName, isVerified } = bike.bike;
-    console.log(bike)
+        sellerName, isVerified } = bike;
     return (
-        <div className='mx-auto'>
+        <section className='mx-auto'>
             <div className="card w-full bg-base-100 shadow-xl">
                 <figure><img className=' h-96' src={img} alt="Shoes" /></figure>
                 <div className="card-body">
@@ -19,20 +18,24 @@ const Bike = (bike) => {
                     <p><span className='font-bold'>Resale Price:</span>{resaleValue} BDT</p>
                     <p><span className='font-bold'>Used:</span>{usedYears} Year</p>
                     <div >
-                        <p className='flex gap-4'><span className='font-bold'>Seller Name:</span>{sellerName}
+                        <div className='flex gap-4'><span className='font-bold'>Seller Name:</span>{sellerName}
                             {
                                 isVerified ? <div className="tooltip flex items-center" data-tip="Verified Seller">
                                     <span className='text-green-500 '> <MdVerified></MdVerified></span>
                                 </div> : <small></small>
                             }
-                        </p>
+                        </div>
                     </div>
                     <p>{description}</p>
                 </div>
-                <button className='btn btn-primary  mx-24 mb-8'>Book Now</button>
+                <label
+                    htmlFor="booking-modal"
+                    className="btn btn-primary  mx-24 mb-8"
+                    onClick={() => setBookBike(bike)}
+                >Book Now</label>
             </div>
 
-        </div>
+        </section>
     );
 };
 
