@@ -45,7 +45,7 @@ const Navbar = () => {
 
                         <div className='flex justify-cente'>
                             <img className='w-16  rounded-xl mr-2' src={logo} alt="" />
-                            <Link to='/' className="btn btn-ghost normal-case text-3xl font-bold">Moto Vintage</Link>
+                            <Link to='/' className="btn btn-ghost normal-case lg:text-3xl text-xl font-bold">Moto Vintage</Link>
                         </div>
 
                     </div>
