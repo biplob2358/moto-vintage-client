@@ -2,7 +2,7 @@ import React from 'react';
 import { MdVerified } from 'react-icons/md';
 
 const Bike = ({ bike, setBookBike }) => {
-    const { name, img, description, location, resaleValue, originalPrice, usedYears, condition,
+    const { bikeName, img, description, location, resaleValue, originalPrice, usedYears, condition,
         sellerName, isVerified } = bike;
     return (
         <section className='mx-auto'>
@@ -10,7 +10,7 @@ const Bike = ({ bike, setBookBike }) => {
                 <figure><img className=' h-96' src={img} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">
-                        {name}
+                        {bikeName}
                     </h2>
                     <p><span className='font-bold'>Location:</span>{location}</p>
                     <p><span className='font-bold'>Condition:</span>{condition}</p>

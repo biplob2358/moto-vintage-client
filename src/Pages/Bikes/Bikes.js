@@ -22,6 +22,7 @@ const Bikes = () => {
             {
                 bookBike &&
                 <BookingModal
+                    setBookBike={setBookBike}
                     bookBike={bookBike}
                 ></BookingModal>}
         </div>

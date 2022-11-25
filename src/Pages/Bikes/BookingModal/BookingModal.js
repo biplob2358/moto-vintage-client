@@ -1,11 +1,25 @@
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
-const BookingModal = ({ bookBike }) => {
-    const { name, resaleValue } = bookBike;
+const BookingModal = ({ bookBike, setBookBike }) => {
+    const { bikeName, resaleValue } = bookBike;
     const { user } = useContext(AuthContext);
     const handleBooking = event => {
         event.preventDefault();
+        const form = event.target;
+        const userName = form.userName.value;
+        const userEmail = form.email.value;
+        const bikeName = form.bikeName.value;
+        const resaleValue = form.resaleValue.value;
+        const phone = form.phone.value;
+        const location = form.location.value;
+        const booking = {
+            userName, userEmail, bikeName, resaleValue, phone, location
+        }
+        console.log(booking)
+        setBookBike(null);
+        toast.success('Booking successfull')
     }
     return (
         <>
@@ -13,12 +27,12 @@ const BookingModal = ({ bookBike }) => {
             <div className="modal">
                 <div className="modal-box relative">
                     <label htmlFor="booking-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
-                    <h3 className="text-lg font-bold">{name}</h3>
+                    <h3 className="text-lg font-bold text-center">{bikeName}</h3>
                     <form onSubmit={handleBooking} className='grid grid-cols-1 gap-4 mt-10 drop-shadow-lg rounded'>
-                        <input name='userName' type="text" value={user?.displayName} readOnly className="input input-bordered w-full " />
-                        <input name='userEmail' type="email" value={user?.email} readOnly className="input input-bordered w-full " />
-                        <input name='name' type="text" value={name} readOnly className="input input-bordered w-full " />
-                        <input name='resaleValue' type="text" value={resaleValue} readOnly className="input input-bordered w-full " />
+                        <input name='userName' type="text" value={user?.displayName} disabled className="input input-bordered w-full " />
+                        <input name='email' type="email" value={user?.email} disabled className="input input-bordered w-full " />
+                        <input name='bikeName' type="text" value={bikeName} disabled className="input input-bordered w-full " />
+                        <input name='resaleValue' type="text" value={resaleValue} disabled className="input input-bordered w-full " />
                         <input name='phone' type="text" placeholder='Enter Your Phone Number ' required className="input input-bordered w-full " />
                         <input name='location' type="text" placeholder='Enter Meeting Location' required className="input input-bordered w-full " />
                         <br />
