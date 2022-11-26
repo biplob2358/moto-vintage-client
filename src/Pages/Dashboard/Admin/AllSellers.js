@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { MdVerified } from 'react-icons/md';
 
 const AllSellers = () => {
-    const { data: sellers = [] } = useQuery({
+    const { data: sellers = [], refetch } = useQuery({
         queryKey: ['seller'],
         queryFn: async () => {
             const res = await fetch('http://localhost:5000/allusers?role=seller');
@@ -11,9 +12,21 @@ const AllSellers = () => {
         }
     });
 
+    const handleVerified = id => {
+        fetch(`http://localhost:5000/allusers/seller/${id}`, {
+            method: 'PUT'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                refetch();
+            })
+
+    }
+
     return (
         <div>
-            <h2>All Buyers</h2>
+            <h2 className="text-3xl text-center my-4 font-bold">All Buyers</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
 
@@ -37,7 +50,13 @@ const AllSellers = () => {
                                 <td>{seller.name}</td>
                                 <td>{seller.email}</td>
                                 <td>{seller.role}</td>
-                                <td> <button className="btn  shadow-lg bg-green-400 btn-xs">make verified</button> </td>
+                                <td>
+                                    {
+                                        seller?.isVerified ?
+                                            <div><p className='flex items-center'>Verified <span className='text-green-600'> <MdVerified></MdVerified> </span></p> </div>
+                                            : <button onClick={() => handleVerified(seller._id)} className="btn  shadow-lg bg-green-400 btn-xs">make verified</button>
+
+                                    } </td>
                                 <td> <button className="btn  shadow-lg bg-red-400 btn-xs">Delete</button> </td>
 
                             </tr>)
