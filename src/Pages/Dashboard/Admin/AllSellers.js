@@ -13,7 +13,7 @@ const AllSellers = () => {
         }
     });
 
-    const handleVerified = id => {
+    const handleVerified = (id, email) => {
         fetch(`http://localhost:5000/allusers/seller/${id}`, {
             method: 'PUT',
             headers: {
@@ -23,12 +23,21 @@ const AllSellers = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    toast.success('Seller verified successful.')
-                    refetch();
+                    fetch(`http://localhost:5000/allproducts?email=${email}`)
+
+                        .then(res => res.json())
+                        .then(data => {
+                            console.log(data)
+                            toast.success('Seller Verified successful.')
+                            refetch();
+
+                        })
+
                 }
             })
 
     }
+
 
     return (
         <div>
@@ -60,7 +69,7 @@ const AllSellers = () => {
                                     {
                                         seller?.isVerified ?
                                             <div><p className='flex items-center'>Verified <span className='text-green-600'> <MdVerified></MdVerified> </span></p> </div>
-                                            : <button onClick={() => handleVerified(seller._id)} className="btn  shadow-lg bg-green-400 btn-xs">make verified</button>
+                                            : <button onClick={() => handleVerified(seller._id, seller.email)} className="btn  shadow-lg bg-green-400 btn-xs">make verified</button>
 
                                     } </td>
                                 <td> <button className="btn  shadow-lg bg-red-400 btn-xs">Delete</button> </td>

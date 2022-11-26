@@ -41,7 +41,10 @@ const MyProducts = () => {
                                     {
                                         bike?.soldOut ? <p>Sold Out</p>
                                             : <>
-                                                <button className="btn bg-green-400 btn-xs">Advertise</button>
+                                                <div className='flex '>
+                                                    <p className='mr-4'>Available</p>
+                                                    <button className="btn shadow-lg bg-green-400 btn-xs">Advertise</button>
+                                                </div>
                                             </>
                                     }
                                 </td>

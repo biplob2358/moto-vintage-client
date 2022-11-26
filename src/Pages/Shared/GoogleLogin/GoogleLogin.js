@@ -1,5 +1,5 @@
 import { GoogleAuthProvider } from 'firebase/auth';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -17,11 +17,14 @@ const GoogleLogin = () => {
 
     const from = location.state?.from?.pathname || "/";
 
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
 
-    if (token) {
-        navigate(from, { replace: true });
+        }
 
-    }
+    }, [from, navigate, token])
+
 
 
     const handleGoogleSignIn = () => {

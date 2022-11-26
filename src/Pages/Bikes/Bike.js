@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { MdVerified } from 'react-icons/md';
+import { AuthContext } from '../../contexts/AuthProvider';
+import useBuyer from '../../hooks/useBuyer';
 
 const Bike = ({ bike, setBookBike }) => {
     const { bikeName, img, description, location, resaleValue, originalPrice, usedYears, condition,
         sellerName, isVerified, date } = bike;
+    const { user } = useContext(AuthContext)
+    console.log(user)
+
+    const [isBuyer] = useBuyer(user?.email)
+    console.log(isBuyer)
     return (
         <section className='mx-auto'>
             <div className="card w-full bg-base-100 shadow-xl">
@@ -29,11 +36,22 @@ const Bike = ({ bike, setBookBike }) => {
                     <p><span className='font-bold mr-2'>Description:</span>{description} Year</p>
                     <small><span className='text-yellow-500'>Posted date:</span> {date?.slice(0, 10)}</small>
                 </div>
-                <label
-                    htmlFor="booking-modal"
-                    className="btn btn-primary  mx-24 mb-8"
-                    onClick={() => setBookBike(bike)}
-                >Book Now</label>
+
+                {
+                    isBuyer ? <>
+                        <label
+                            htmlFor="booking-modal"
+                            className="btn btn-primary  mx-24 mb-8"
+                            onClick={() => setBookBike(bike)}
+                        >Book Now</label>
+                    </> :
+                        <>
+                            <div className="tooltip " data-tip="Only Buyer can book ">
+                                <button disabled className='btn btn-primary w-96 mx-auto mb-4 '>Book Now</button>
+                            </div>
+                        </>
+                }
+
             </div>
 
         </section>
