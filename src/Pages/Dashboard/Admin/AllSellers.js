@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import toast from 'react-hot-toast';
 import { MdVerified } from 'react-icons/md';
 
 const AllSellers = () => {
@@ -14,12 +15,17 @@ const AllSellers = () => {
 
     const handleVerified = id => {
         fetch(`http://localhost:5000/allusers/seller/${id}`, {
-            method: 'PUT'
+            method: 'PUT',
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
-                refetch();
+                if (data.modifiedCount > 0) {
+                    toast.success('Seller verified successful.')
+                    refetch();
+                }
             })
 
     }
