@@ -32,7 +32,7 @@ const AllSellers = () => {
 
     return (
         <div>
-            <h2 className="text-3xl text-center my-4 font-bold">All Buyers</h2>
+            <h2 className="text-3xl text-center my-4 font-bold">All Seller</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
 
