@@ -30,7 +30,7 @@ const GoogleLogin = () => {
                 const user = result.user;
                 console.log(user);
                 setCreatedUserEmail(user?.email);
-                saveUser(user.displayName, user.email, 'user');
+                saveUser(user.displayName, user.email, 'buyer');
                 toast.success("Login successfull");
 
             })
