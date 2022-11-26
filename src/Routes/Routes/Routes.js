@@ -4,6 +4,7 @@ import Main from '../../Layout/Main';
 import Bikes from '../../Pages/Bikes/Bikes';
 import AllBuyers from '../../Pages/Dashboard/Admin/AllBuyers';
 import AllSellers from '../../Pages/Dashboard/Admin/AllSellers';
+import AddProduct from '../../Pages/Dashboard/Seller/AddProduct';
 import MyOrders from '../../Pages/Dashboard/User/MyOrders';
 import Blogs from '../../Pages/Home/Blogs/Blogs';
 import Home from '../../Pages/Home/Home/Home';
@@ -12,6 +13,7 @@ import NotFound from '../../Pages/NotFound/NotFound';
 import SignUp from '../../Pages/SignUp/SignUp';
 import AdminRoute from '../AdminRoute/AdminRoute';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import SellerRoute from '../SellerRoute/SellerRoute';
 
 const router = createBrowserRouter([
     {
@@ -65,6 +67,10 @@ const router = createBrowserRouter([
                 path: '/dashboard/allseller',
                 element: <AdminRoute> <AllSellers></AllSellers></AdminRoute>
             },
+            {
+                path: '/dashboard/addproduct',
+                element: <SellerRoute> <AddProduct></AddProduct> </SellerRoute>
+            }
         ]
     }
 
