@@ -11,11 +11,7 @@ const MyOrders = () => {
     const { data: bookings = [], isLoading } = useQuery({
         queryKey: ['bookings', user?.email],
         queryFn: async () => {
-            const res = await fetch(url, {
-                headers: {
-                    authorization: `bearer ${localStorage.getItem('accessToken')}`
-                }
-            });
+            const res = await fetch(url)
             const data = await res.json();
             return data;
         }

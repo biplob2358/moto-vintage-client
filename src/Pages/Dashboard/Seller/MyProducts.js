@@ -40,6 +40,21 @@ const MyProducts = () => {
 
             })
     }
+    const handleAdvertise = bike => {
+        fetch(`http://localhost:5000/advertisement/${bike._id}`, {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    refetch();
+                    toast.success('advertise Successfully');
+                }
+
+            })
+    }
     return (
         <div>
             <h2 className="text-3xl text-center my-4 font-bold">My Product</h2>
@@ -71,7 +86,7 @@ const MyProducts = () => {
                                             : <>
                                                 <div className='flex '>
                                                     <p className='mr-4'>Available</p>
-                                                    <button className="btn shadow-lg bg-green-400 btn-xs">Advertise</button>
+                                                    <button onClick={() => { handleAdvertise(bike) }} className="btn shadow-lg bg-green-400 btn-xs">Advertise</button>
                                                 </div>
                                             </>
                                     }

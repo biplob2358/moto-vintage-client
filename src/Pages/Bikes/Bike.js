@@ -1,4 +1,6 @@
+import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { MdVerified } from 'react-icons/md';
 import { AuthContext } from '../../contexts/AuthProvider';
 import useBuyer from '../../hooks/useBuyer';
@@ -7,10 +9,20 @@ const Bike = ({ bike, setBookBike }) => {
     const { bikeName, img, description, location, resaleValue, originalPrice, usedYears, condition,
         sellerName, isVerified, date, purchaseYear, soldOut } = bike;
     const { user } = useContext(AuthContext)
-    console.log(user)
 
     const [isBuyer] = useBuyer(user?.email)
-    console.log(isBuyer)
+
+    const handleReport = (bike) => {
+        fetch(`http://localhost:5000/report/${bike._id}`)
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success('Reported Successfully')
+                }
+            })
+
+    }
+
     return (
 
         <>
@@ -44,11 +56,21 @@ const Bike = ({ bike, setBookBike }) => {
 
                         {
                             isBuyer ? <>
-                                <label
-                                    htmlFor="booking-modal"
-                                    className="btn btn-primary  mx-24 mb-8"
-                                    onClick={() => setBookBike(bike)}
-                                >Book Now</label>
+                                <div className='grid grid-cols-2 mb-8  content-center justify-items-end'>
+                                    <div className=' items-center '>
+                                        <label
+                                            htmlFor="booking-modal"
+                                            className="btn btn-primary w-52 "
+                                            onClick={() => setBookBike(bike)}
+                                        >Book Now</label>
+                                    </div>
+                                    <div className='items-center'>
+                                        <label
+                                            className="btn btn-sm mr-4 bg-red-700 shadow-2xl  mt-4 w-36"
+                                            onClick={() => handleReport(bike)}
+                                        >Report to admin</label>
+                                    </div>
+                                </div>
                             </> :
                                 <>
                                     <div className="tooltip " data-tip="Only Buyer can book ">
