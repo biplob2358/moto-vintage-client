@@ -29,7 +29,7 @@ const MyOrders = () => {
     return (
         <div >
             <h3 className="text-3xl text-center my-4 font-bold">My Orders</h3>
-            <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-8'>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-8 mb-4'>
                 {
                     bookings.length > 0 &&
                     bookings?.map(booking =>

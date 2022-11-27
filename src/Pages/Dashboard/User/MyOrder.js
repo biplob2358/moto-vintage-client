@@ -19,7 +19,7 @@ const MyOrder = ({ booking }) => {
                         }
                         {
                             resaleValue && booking.paid &&
-                            <button className="btn w-48 mx-auto btn-primary">Paid</button>
+                            <button disabled className="btn w-48 mx-auto btn-primary">Paid</button>
                         }
                     </div>
                 </div>
