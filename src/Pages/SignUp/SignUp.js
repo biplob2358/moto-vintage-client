@@ -108,7 +108,7 @@ const SignUp = () => {
 
                         <input className='btn btn-primary bg-blue-500 w-full' type="submit" value="Login" />
                     </form>
-                    <p>Already have an account?? <Link to='/login' className='text-primary'>Login </Link> </p>
+                    <p>Already have an account?? <Link to='/login' className='text-primary'>SignUp </Link> </p>
                     <div className="divider">OR</div>
                     <div>
                         <GoogleLogin></GoogleLogin>

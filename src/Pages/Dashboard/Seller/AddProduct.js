@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 import { AuthContext } from '../../../contexts/AuthProvider';
 
@@ -10,6 +11,7 @@ const AddProduct = () => {
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const imageHostKey = process.env.REACT_APP_imgbb_key;
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate();
 
 
     const { data: sellers = [], isLoading } = useQuery({
@@ -26,6 +28,8 @@ const AddProduct = () => {
             <progress className="progress w-56 flex "></progress>
         </div>
     }
+
+
     const handleAddBike = data => {
         if (!sellers[0]?.isVerified) {
             sellers[0].isVerified = false
@@ -75,6 +79,7 @@ const AddProduct = () => {
                             console.log(result);
                             toast.success('New product is added successfully');
                             reset()
+                            navigate('/dashboard/myproduct')
                         }
 
 
@@ -83,6 +88,8 @@ const AddProduct = () => {
             })
 
     }
+
+
     return (
 
         <div>
