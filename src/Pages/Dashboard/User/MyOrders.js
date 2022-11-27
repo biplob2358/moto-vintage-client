@@ -7,7 +7,8 @@ const MyOrders = () => {
     const { user } = useContext(AuthContext);
     const url = `http://localhost:5000/bookings?email=${user?.email}`;
 
-    const { data: bookings = [] } = useQuery({
+
+    const { data: bookings = [], isLoading } = useQuery({
         queryKey: ['bookings', user?.email],
         queryFn: async () => {
             const res = await fetch(url, {
@@ -19,6 +20,11 @@ const MyOrders = () => {
             return data;
         }
     })
+    if (isLoading) {
+        return <div className='grid h-96 justify-items-center content-center'>
+            <progress className="progress w-56 flex "></progress>
+        </div>
+    }
 
     return (
         <div >

@@ -5,7 +5,7 @@ import useBuyer from '../../hooks/useBuyer';
 
 const Bike = ({ bike, setBookBike }) => {
     const { bikeName, img, description, location, resaleValue, originalPrice, usedYears, condition,
-        sellerName, isVerified, date } = bike;
+        sellerName, isVerified, date, purchaseYear } = bike;
     const { user } = useContext(AuthContext)
     console.log(user)
 
@@ -23,6 +23,7 @@ const Bike = ({ bike, setBookBike }) => {
                     <p><span className='font-bold mr-2'>Condition:</span>{condition}</p>
                     <p><span className='font-bold mr-2'>Original Price:</span>{originalPrice} BDT</p>
                     <p><span className='font-bold mr-2'>Resale Price:</span>{resaleValue} BDT</p>
+                    <p><span className='font-bold mr-2'>Purchase Year:</span>{purchaseYear ? purchaseYear : <span className='text-red-500'>Not Found</span>} </p>
                     <p><span className='font-bold mr-2'>Used:</span>{usedYears} Year</p>
                     <div >
                         <div className='flex gap-4'><span className='font-bold'>Seller Name:</span>{sellerName}
@@ -33,7 +34,7 @@ const Bike = ({ bike, setBookBike }) => {
                             }
                         </div>
                     </div>
-                    <p><span className='font-bold mr-2'>Description:</span>{description} Year</p>
+                    <p><span className='font-bold mr-2'>Description:</span>{description}</p>
                     <small><span className='text-yellow-500'>Posted date:</span> {date?.slice(0, 10)}</small>
                 </div>
 

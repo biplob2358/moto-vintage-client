@@ -35,6 +35,7 @@ const AddProduct = () => {
             sellers[0].isVerified = false
         }
         const date = new Date();
+        const advDate = new Date();
         const image = data.img[0];
         const formData = new FormData();
         formData.append('image', image);
@@ -59,7 +60,10 @@ const AddProduct = () => {
                     phone: data.phone,
                     location: data.location,
                     description: data.description,
+                    purchaseYear: data.purchaseYear,
                     date: date,
+                    advDate: advDate,
+                    advertise: false,
                     soldOut: false,
                     report: false,
                 }
@@ -146,12 +150,20 @@ const AddProduct = () => {
                             </select>
                         </div>
                         <div className="form-control w-full ">
+                            <label className="label"><span className="label-text">Purchase year</span></label>
+                            <input type="text"
+                                {...register("purchaseYear", { required: "Used Year is required" })}
+                                className="input input-bordered w-full  " />
+                            {errors.purchaseYear && <p className='text-red-600'>{errors.purchaseYear?.message}</p>}
+                        </div>
+                        <div className="form-control w-full ">
                             <label className="label"><span className="label-text">Year of used</span></label>
                             <input type="text"
                                 {...register("usedYears", { required: "Used Year is required" })}
                                 className="input input-bordered w-full  " />
                             {errors.usedYears && <p className='text-red-600'>{errors.usedYears?.message}</p>}
                         </div>
+
                         <div className="form-control w-full ">
                             <label className="label"><span className="label-text">Phone</span></label>
                             <input type="text"

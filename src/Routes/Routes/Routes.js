@@ -5,6 +5,7 @@ import Bikes from '../../Pages/Bikes/Bikes';
 import AllBuyers from '../../Pages/Dashboard/Admin/AllBuyers';
 import AllSellers from '../../Pages/Dashboard/Admin/AllSellers';
 import Dashboard from '../../Pages/Dashboard/Dashboard/Dashboard';
+import Payment from '../../Pages/Dashboard/Payment/Payment';
 import AddProduct from '../../Pages/Dashboard/Seller/AddProduct';
 import MyProducts from '../../Pages/Dashboard/Seller/MyProducts';
 import MyOrders from '../../Pages/Dashboard/User/MyOrders';
@@ -12,6 +13,7 @@ import Blogs from '../../Pages/Home/Blogs/Blogs';
 import Home from '../../Pages/Home/Home/Home';
 import Login from '../../Pages/Login/Login';
 import NotFound from '../../Pages/NotFound/NotFound';
+import DisplayError from '../../Pages/Shared/DisplayError/DisplayError';
 import SignUp from '../../Pages/SignUp/SignUp';
 import AdminRoute from '../AdminRoute/AdminRoute';
 import BuyerRoute from '../BuyerRoute/BuyerRoute';
@@ -27,6 +29,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <DisplayError></DisplayError>,
         children: [
 
             {
@@ -57,6 +60,7 @@ const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <PrivateRoute><DashboardLayout></DashboardLayout> </PrivateRoute>,
+        errorElement: <DisplayError></DisplayError>,
         children: [
             {
                 path: '/dashboard',
@@ -83,7 +87,12 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/myproduct',
                 element: <SellerRoute> <MyProducts></MyProducts> </SellerRoute>
-            }
+            },
+            {
+                path: '/dashboard/payment/:id',
+                element: <BuyerRoute><Payment></Payment></BuyerRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/bookings/${params.id}`)
+            },
         ]
     }
 

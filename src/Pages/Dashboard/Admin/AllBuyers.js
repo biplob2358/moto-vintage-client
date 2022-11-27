@@ -30,9 +30,11 @@ const AllBuyers = () => {
         })
             .then(res => res.json())
             .then(data => {
-                if (data.deletedCoun > 0) {
-                    refetch();
+                if (data.deletedCount > 0) {
+                    console.log(data)
                     toast.success('Seller Deleted Successfully');
+                    refetch();
+
                 }
             })
     }
