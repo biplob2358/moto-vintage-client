@@ -67,7 +67,6 @@ const AddProduct = () => {
                     soldOut: false,
                     report: false,
                 }
-                console.log(bikes)
                 fetch('http://localhost:5000/products', {
                     method: 'POST',
                     headers: {
@@ -80,7 +79,6 @@ const AddProduct = () => {
                     .then(result => {
 
                         if (result.acknowledged) {
-                            console.log(result);
                             toast.success('New product is added successfully');
                             reset()
                             navigate('/dashboard/myproduct')

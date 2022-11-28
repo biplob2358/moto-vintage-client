@@ -7,7 +7,7 @@ import useToken from '../../hooks/useToken';
 import GoogleLogin from '../Shared/GoogleLogin/GoogleLogin';
 
 const Login = () => {
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const { signIn } = useContext(AuthContext);
     const [loginUserEmail, setLoginUserEmail] = useState('');
     const [token] = useToken(loginUserEmail);
@@ -28,11 +28,10 @@ const Login = () => {
 
 
     const handleLogin = data => {
-        console.log(data);
         signIn(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                reset()
                 toast.success("Login Successfull")
                 setLoginUserEmail(data.email);
             })
