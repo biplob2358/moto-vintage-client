@@ -4,11 +4,11 @@
 
 ## [Live Site Link](https://moto-vintage.web.app/)
 
-# Admin Email & Password
+# Admin Credentials
 
-## Email : admin@admin.com
+## adminEmail : admin@admin.com
 
-## Password : 123456
+## adminPassword : 123456
 
 ## [Live Api](https://moto-vintage-server.vercel.app/)
 
