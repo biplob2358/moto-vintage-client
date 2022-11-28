@@ -14,6 +14,7 @@ const AddProduct = () => {
     const navigate = useNavigate();
 
 
+
     const { data: sellers = [], isLoading } = useQuery({
         queryKey: ['seller'],
         queryFn: async () => {
@@ -78,6 +79,7 @@ const AddProduct = () => {
                     .then(res => res.json())
                     .then(result => {
 
+
                         if (result.acknowledged) {
                             toast.success('New product is added successfully');
                             reset()
@@ -90,6 +92,9 @@ const AddProduct = () => {
             })
 
     }
+
+
+
 
 
     return (

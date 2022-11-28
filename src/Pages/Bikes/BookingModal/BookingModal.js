@@ -26,10 +26,14 @@ const BookingModal = ({ bookBike, setBookBike }) => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.acknowledged) {
                     setBookBike(null);
                     toast.success('Booking successfull')
+                }
+                else {
+                    toast.error(data.message);
+                    setBookBike(null);
+
                 }
 
             })

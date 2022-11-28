@@ -9,7 +9,7 @@ const MyOrder = ({ booking }) => {
                 <figure><img className='w-4/5 rounded-lg' src={img} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{bikeName}</h2>
-                    <p>Price:{resaleValue}</p>
+                    <p>Price:{resaleValue} BDT</p>
                     <div className="card-actions justify-center">
                         {
                             resaleValue && !booking.paid &&

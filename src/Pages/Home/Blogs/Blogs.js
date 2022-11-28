@@ -1,7 +1,9 @@
 import React from 'react';
 import img from '../../../Assets/Banner/comparison-angular-react-vue.png'
+import useTitle from '../../../hooks/useTitle';
 
 const Blogs = () => {
+    useTitle("Blog");
     return (
         <div className='container mx-auto'>
             <div className="card mb-4 w-full bg-base-100 shadow-xl">

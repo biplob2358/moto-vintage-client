@@ -12,7 +12,7 @@ const CheckoutForm = ({ booking }) => {
     const elements = useElements();
 
     const { resaleValue, userName, userEmail, _id, bikeId } = booking;
-    console.log(bikeId)
+
 
 
     useEffect(() => {

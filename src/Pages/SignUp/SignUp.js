@@ -3,10 +3,12 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 import useToken from '../../hooks/useToken';
 import GoogleLogin from '../Shared/GoogleLogin/GoogleLogin';
 
 const SignUp = () => {
+    useTitle("Sign up");
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const { createUser, updateUser } = useContext(AuthContext);
     const [createdUserEmail, setCreatedUserEmail] = useState('');
