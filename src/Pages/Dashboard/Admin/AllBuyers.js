@@ -16,13 +16,13 @@ const AllBuyers = () => {
     const { data: buyers = [], refetch } = useQuery({
         queryKey: ['buyer'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allusers?role=buyer');
+            const res = await fetch('https://moto-vintage-server.vercel.app/allusers?role=buyer');
             const data = await res.json();
             return data;
         }
     });
     const handleDeteletBuyer = buyer => {
-        fetch(`http://localhost:5000/users/${buyer._id}`, {
+        fetch(`https://moto-vintage-server.vercel.app/users/${buyer._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

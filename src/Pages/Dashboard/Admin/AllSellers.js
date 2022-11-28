@@ -15,14 +15,14 @@ const AllSellers = () => {
     const { data: sellers = [], refetch } = useQuery({
         queryKey: ['seller'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/allusers?role=seller');
+            const res = await fetch('https://moto-vintage-server.vercel.app/allusers?role=seller');
             const data = await res.json();
             return data;
         }
     });
 
     const handleDeteletSeller = seller => {
-        fetch(`http://localhost:5000/users/${seller._id}`, {
+        fetch(`https://moto-vintage-server.vercel.app/users/${seller._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -39,7 +39,7 @@ const AllSellers = () => {
     }
 
     const handleVerified = (id, email) => {
-        fetch(`http://localhost:5000/allusers/seller/${id}`, {
+        fetch(`https://moto-vintage-server.vercel.app/allusers/seller/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -48,7 +48,7 @@ const AllSellers = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    fetch(`http://localhost:5000/allproducts?email=${email}`)
+                    fetch(`https://moto-vintage-server.vercel.app/allproducts?email=${email}`)
 
                         .then(res => res.json())
                         .then(data => {

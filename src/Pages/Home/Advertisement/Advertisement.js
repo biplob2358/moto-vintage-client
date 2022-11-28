@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 
 const Advertisement = () => {
-    const url = ('http://localhost:5000/allbikes')
+    const url = ('https://moto-vintage-server.vercel.app/allbikes')
     const { data: bike = [], isLoading } = useQuery({
         queryKey: ['bike'],
         queryFn: async () => {

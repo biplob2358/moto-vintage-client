@@ -17,7 +17,7 @@ const CheckoutForm = ({ booking }) => {
 
     useEffect(() => {
 
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://moto-vintage-server.vercel.app/create-payment-intent", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -79,7 +79,7 @@ const CheckoutForm = ({ booking }) => {
                 userEmail,
                 bookingId: _id
             }
-            fetch('http://localhost:5000/payments', {
+            fetch('https://moto-vintage-server.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -91,7 +91,7 @@ const CheckoutForm = ({ booking }) => {
                 .then(data => {
                     console.log(data);
                     if (data.insertedId) {
-                        fetch(`http://localhost:5000/productstatus/${bikeId}`)
+                        fetch(`https://moto-vintage-server.vercel.app/productstatus/${bikeId}`)
                             .then(res => res.json())
                             .then(data => {
                                 console.log(data);

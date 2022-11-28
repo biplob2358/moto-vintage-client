@@ -12,14 +12,14 @@ const Report = () => {
     const { data: reported = [], refetch, isLoading } = useQuery({
         queryKey: ['reported'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/report');
+            const res = await fetch('https://moto-vintage-server.vercel.app/report');
             const data = await res.json();
             return data;
         }
     });
 
     const handelDeleteItem = (report) => {
-        fetch(`http://localhost:5000/report/${report._id}`, {
+        fetch(`https://moto-vintage-server.vercel.app/report/${report._id}`, {
             method: "DELETE",
         })
             .then(res => res.json())

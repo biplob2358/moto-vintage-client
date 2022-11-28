@@ -12,7 +12,7 @@ const Bike = ({ bike, setBookBike }) => {
     const [isBuyer] = useBuyer(user?.email)
 
     const handleReport = (bike) => {
-        fetch(`http://localhost:5000/report/${bike._id}`)
+        fetch(`https://moto-vintage-server.vercel.app/report/${bike._id}`)
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {

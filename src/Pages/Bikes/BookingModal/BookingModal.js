@@ -17,7 +17,7 @@ const BookingModal = ({ bookBike, setBookBike }) => {
         const booking = {
             bikeId: _id, img, userName, userEmail, bikeName, resaleValue, phone, location
         }
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://moto-vintage-server.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

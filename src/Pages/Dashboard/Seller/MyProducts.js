@@ -18,14 +18,14 @@ const MyProducts = () => {
     const { data: bikes = [], refetch } = useQuery({
         queryKey: ['bikes'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/product?email=${user?.email}`);
+            const res = await fetch(`https://moto-vintage-server.vercel.app/product?email=${user?.email}`);
             const data = await res.json();
             return data;
         }
     });
 
     const handleDeteletSeller = bike => {
-        fetch(`http://localhost:5000/products/${bike._id}`, {
+        fetch(`https://moto-vintage-server.vercel.app/products/${bike._id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -41,7 +41,7 @@ const MyProducts = () => {
             })
     }
     const handleAdvertise = bike => {
-        fetch(`http://localhost:5000/advertisement/${bike._id}`, {
+        fetch(`https://moto-vintage-server.vercel.app/advertisement/${bike._id}`, {
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             }
