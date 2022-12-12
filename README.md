@@ -12,7 +12,7 @@
 
 ## [Live Api](https://moto-vintage-server.vercel.app/)
 
-## `Features and functionality of Shutter Up`
+## `Features and functionality of Moto Vintage`
 
 - ### **Moto Vintage Up is a resele bike E-commerce   Website**
 - ### **There are lot of bikes**
