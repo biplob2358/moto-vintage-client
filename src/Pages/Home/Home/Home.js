@@ -1,5 +1,6 @@
 import React from 'react';
 import useTitle from '../../../hooks/useTitle';
+import Contact from '../../Contact/Contact';
 import Advertisement from '../Advertisement/Advertisement';
 import Banner from '../Banner/Banner';
 import Categories from '../Categories/Categories';
@@ -15,7 +16,9 @@ const Home = () => {
             <Advertisement></Advertisement>
             <Categories></Categories>
             <Gallery></Gallery>
+
             <Summary></Summary>
+            <Contact></Contact>
         </div>
     );
 };
